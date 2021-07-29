@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.1.4'
+    id 'java'
+}
+
+group 'icu.kyakya'
+version '1.0-SNAPSHOT'
+
+// config of gradle
+wrapper {
+    jarFile = file(System.getProperty("user.dir") + '/gradle/wrapper/gradle-wrapper.jar')
+    gradleVersion = '7.1'
+    distributionType = Wrapper.DistributionType.ALL
+}
+// JDK version
+java.toolchain.languageVersion = JavaLanguageVersion.of(11)
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2021.2'
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
