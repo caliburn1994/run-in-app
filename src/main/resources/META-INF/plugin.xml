@@ -1,12 +1,9 @@
 <idea-plugin>
     <id>icu.kyakya.run-app</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Open In External App</name>
+    <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu">caliburn1994</vendor>
 
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-    ]]></description>
+    <description>Using it, you can open file in the default external app</description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -17,6 +14,11 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
+        <action id="icu.kyakya.runapp.OpenInExternalAppAction"
+                class="icu.kyakya.runapp.OpenInExternalAppAction"
+                text="External Apps">
+            <add-to-group group-id="RevealGroup" anchor="last"/>
+            <mouse-shortcut keystroke="control doubleClick" keymap="$default" />
+        </action>
     </actions>
 </idea-plugin>
