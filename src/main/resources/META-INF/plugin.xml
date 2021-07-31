@@ -3,7 +3,7 @@
     <name>Open In External App</name>
     <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu">caliburn1994</vendor>
 
-    <description>Using it, you can open file in the default external app</description>
+    <description>Open files in the default external app. For more information, click: https://github.com/caliburn1994/run-in-app</description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -14,8 +14,8 @@
     </extensions>
 
     <actions>
-        <action id="icu.kyakya.open.apps.OpenInExternalAppAction"
-                class="icu.kyakya.open.apps.OpenInExternalAppAction"
+        <action id="icu.kyakya.open.app.OpenInExternalAppAction"
+                class="icu.kyakya.open.app.OpenInExternalAppAction"
                 text="External Apps">
             <add-to-group group-id="RevealGroup" anchor="last"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default" />

@@ -1,5 +1,5 @@
 
-package icu.kyakya.open.apps;
+package icu.kyakya.open.app;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
