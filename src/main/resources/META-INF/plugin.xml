@@ -3,7 +3,9 @@
     <name>Open In External App</name>
     <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu">caliburn1994</vendor>
 
-    <description>Open files in the default external app. You can use Ctrl+double right-click to do this operation. For more information, click: https://github.com/caliburn1994/run-in-app</description>
+    <description><![CDATA[
+        Open files in the default external app. You can use Ctrl+double right-click to do this operation. For more information, see <a href="https://github.com/caliburn1994/run-in-app" target="_blank">here</a>.
+        ]]></description>
 
     <change-notes><![CDATA[
 		<h3>1.0.0: Initial release of the plugin:</h3>
@@ -26,7 +28,7 @@
                 class="icu.kyakya.open.app.OpenInExternalAppAction"
                 text="External Apps">
             <add-to-group group-id="RevealGroup" anchor="last"/>
-            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default" />
+            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
         </action>
     </actions>
 </idea-plugin>
