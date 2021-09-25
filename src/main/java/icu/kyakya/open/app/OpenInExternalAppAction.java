@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static icu.kyakya.open.app.CommonUtils.localFiles;
+
 /**
  * DumbAware = not need to wait for indexing
  *
@@ -28,7 +30,14 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
 
     @Override
     public void update(AnActionEvent e) {
+        VirtualFile file = e.getData(CommonDataKeys.VIRTUAL_FILE);
+        boolean isVisible = true;
+        if (file != null) {
+            isVisible = !file.isDirectory();
+        }
+
         e.getPresentation().setEnabledAndVisible(e.getProject() != null && localFiles(e).findAny().isPresent());
+        e.getPresentation().setVisible(isVisible);
     }
 
     /**
@@ -69,10 +78,7 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
         }
     }
 
-    private static Stream<VirtualFile> localFiles(AnActionEvent e) {
-        VirtualFile[] files = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
-        return files != null ? Stream.of(files).filter(f -> f.isValid() && f.isInLocalFileSystem()) : Stream.empty();
-    }
+
 
 
 }
