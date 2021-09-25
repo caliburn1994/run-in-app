@@ -30,5 +30,13 @@
             <add-to-group group-id="RevealGroup" anchor="last"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
         </action>
+        <action id="icu.kyakya.open.app.OpenInGithub"
+                class="icu.kyakya.open.app.OpenInGithub"
+                text="Github(current branch)">
+            <add-to-group group-id="RevealGroup" anchor="last"/>
+        </action>
     </actions>
+
+    <depends>Git4Idea</depends>
+
 </idea-plugin>
