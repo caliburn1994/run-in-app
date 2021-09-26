@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>icu.kyakya.open-in-apps</id>
     <name>Open In External App</name>
-    <vendor email="caliburn1994@gmail.com" url="https://github.com/caliburn1994/run-in-app">caliburn1994</vendor>
+    <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu/about">caliburn1994</vendor>
 
     <description><![CDATA[
         Open files in the default external app. You can use Ctrl+double right-click to do this operation. For more information, see <a href="https://github.com/caliburn1994/run-in-app" target="_blank">here</a>.
