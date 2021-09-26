@@ -1,13 +1,18 @@
 <idea-plugin>
     <id>icu.kyakya.open-in-apps</id>
     <name>Open In External App</name>
-    <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu">caliburn1994</vendor>
+    <vendor email="caliburn1994@gmail.com" url="https://github.com/caliburn1994/run-in-app">caliburn1994</vendor>
 
     <description><![CDATA[
         Open files in the default external app. You can use Ctrl+double right-click to do this operation. For more information, see <a href="https://github.com/caliburn1994/run-in-app" target="_blank">here</a>.
         ]]></description>
 
     <change-notes><![CDATA[
+    	<h3>1.0.1: improve and new feature:</h3>
+		<ul>
+			<li>access a file in the git repository by browser.</li>
+			<li>hide button "external app" when selected object is a folder.</li>
+		</ul>
 		<h3>1.0.0: Initial release of the plugin:</h3>
 		<ul>
 			<li>Open files by CTRL+double right-click</li>
@@ -30,9 +35,9 @@
             <add-to-group group-id="RevealGroup" anchor="last"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
         </action>
-        <action id="icu.kyakya.open.app.OpenInGithub"
-                class="icu.kyakya.open.app.OpenInGithub"
-                text="Github(current branch)">
+        <action id="icu.kyakya.open.app.OpenGitInBrowser"
+                class="icu.kyakya.open.app.OpenGitInBrowser"
+                text="Git Site(Latest)">
             <add-to-group group-id="RevealGroup" anchor="last"/>
         </action>
     </actions>
