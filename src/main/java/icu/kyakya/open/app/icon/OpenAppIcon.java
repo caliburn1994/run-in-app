@@ -7,9 +7,9 @@ import javax.swing.*;
 
 public class OpenAppIcon {
 
-    private static @NotNull Icon load(@NotNull String path, long cacheKey, int flags) {
-        return IconManager.getInstance().loadRasterizedIcon(path, OpenAppIcon.class.getClassLoader(), cacheKey, flags);
+    private static @NotNull Icon load(@NotNull String path) {
+        return IconManager.getInstance().getIcon(path, OpenAppIcon.class);
     }
 
-    /** 16x16 */ public static final @NotNull Icon git = load("icons/git.svg", -6566091381586036573L, 2);
+    /** 16x16 */ public static final @NotNull Icon git = load("/icons/git.svg");
 }
