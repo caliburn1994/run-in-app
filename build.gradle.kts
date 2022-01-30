@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "icu.kyakya"
-version = "1.0.2"
+version = "1.0.3"
 
 
 // config of gradle
@@ -36,7 +36,7 @@ tasks.getByName<Test>("test") {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set("2021.2.4")
+    version.set("2021.3.1")
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 

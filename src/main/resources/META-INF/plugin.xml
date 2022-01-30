@@ -8,6 +8,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.0.3: for 2021.3.1</h3>
+        <ul>
+			<li>can use this plugin in idea 2021.3.1.</li>
+		</ul>
     	<h3>1.0.1: improve and new feature:</h3>
 		<ul>
 			<li>access a file in the git repository by browser.</li>
