@@ -37,7 +37,7 @@
         </action>
         <action id="icu.kyakya.open.app.OpenGitInBrowser"
                 class="icu.kyakya.open.app.OpenGitInBrowser"
-                text="Git Site(Latest)">
+                text="Git(Latest)">
             <add-to-group group-id="RevealGroup" anchor="last"/>
         </action>
     </actions>
