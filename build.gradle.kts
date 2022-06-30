@@ -11,14 +11,7 @@ group = "icu.kyakya"
 version = "1.0.4"
 
 
-// config of gradle
-// JDK version
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-        vendor.set(JvmVendorSpec.AMAZON)
-    }
-}
+
 
 repositories {
     mavenCentral()
