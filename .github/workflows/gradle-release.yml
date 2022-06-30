@@ -8,8 +8,11 @@
 name: Gradle Package
 
 on:
-  release:
-    types: [created]
+  pull_request:
+    types:
+      - opened
+    branches:    
+      - '**'
 
 jobs:
   build:
