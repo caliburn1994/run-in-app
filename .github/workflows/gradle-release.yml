@@ -8,9 +8,9 @@
 name: Gradle Package
 
 on:
-  pull_request:
-    types:
-      - opened
+  push:
+    tags:
+      - '*'
     branches:    
       - '**'
 
