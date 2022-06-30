@@ -3,12 +3,12 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     java
-    id("org.jetbrains.intellij") version "1.1.4"
-    id("org.jetbrains.kotlin.jvm") version "1.5.30"
+    id("org.jetbrains.intellij") version "1.6.0"
+    id("org.jetbrains.kotlin.jvm") version "1.7.0"
 }
 
 group = "icu.kyakya"
-version = "1.0.3"
+version = "1.0.4"
 
 
 // config of gradle
@@ -36,7 +36,7 @@ tasks.getByName<Test>("test") {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set("2021.3.1")
+    version.set("2022.1.3")
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
