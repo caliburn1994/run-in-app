@@ -45,7 +45,13 @@ public class OpenGitInBrowser extends AnAction implements DumbAware {
                 && isEnable);
 
         // icon
-        String url = new ArrayList<>(repository.getRemotes()).get(0).getUrls().get(0);
+        String url = "";
+        try {
+            url = new ArrayList<>(repository.getRemotes()).get(0).getUrls().get(0);
+        }catch (NullPointerException e1) {
+            return;
+        }
+
         if (url.contains("github.com")) {
             e.getPresentation().setIcon(AllIcons.Vcs.Vendors.Github);
         } else {
