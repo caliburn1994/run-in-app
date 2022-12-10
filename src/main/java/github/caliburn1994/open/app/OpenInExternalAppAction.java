@@ -29,8 +29,7 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
 
         // if the selected is dir, not be visible
         if (file != null && file.isDirectory()) {
-            e.getPresentation().setEnabledAndVisible(false);
-            return;
+            e.getPresentation().setVisible(false);
         }
 
         e.getPresentation().setEnabledAndVisible(CommonUtils.localFiles(e).size() != 0);
