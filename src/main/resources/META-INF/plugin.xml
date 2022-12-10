@@ -10,6 +10,10 @@
     <change-notes><![CDATA[
         <h3>1.0.6: for 2022.2</h3>
         <ul>
+			<li>work for idea 2022.3.</li>
+		</ul>
+        <h3>1.0.6: for 2022.2</h3>
+        <ul>
 			<li>can use this plugin in idea 2022.2.</li>
 		</ul>
         <h3>1.0.5: bugfix</h3>
@@ -45,14 +49,14 @@
     </extensions>
 
     <actions>
-        <action id="icu.kyakya.open.app.OpenInExternalAppAction"
-                class="icu.kyakya.open.app.OpenInExternalAppAction"
+        <action id="github.caliburn1994.open.app.OpenInExternalAppAction"
+                class="github.caliburn1994.open.app.OpenInExternalAppAction"
                 text="External Apps">
             <add-to-group group-id="RevealGroup" anchor="last"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
         </action>
-        <action id="icu.kyakya.open.app.OpenGitInBrowser"
-                class="icu.kyakya.open.app.OpenGitInBrowser"
+        <action id="github.caliburn1994.open.app.OpenGitInBrowser"
+                class="github.caliburn1994.open.app.OpenGitInBrowser"
                 text="Git(Latest)">
             <add-to-group group-id="RevealGroup" anchor="last"/>
         </action>

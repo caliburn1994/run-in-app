@@ -1,4 +1,4 @@
-package icu.kyakya.open.app.icon;
+package github.caliburn1994.open.app.icon;
 
 import com.intellij.ui.IconManager;
 import org.jetbrains.annotations.NotNull;

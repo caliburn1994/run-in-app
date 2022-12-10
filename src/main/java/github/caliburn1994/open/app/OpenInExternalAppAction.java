@@ -1,12 +1,12 @@
 
-package icu.kyakya.open.app;
+package github.caliburn1994.open.app;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import github.caliburn1994.open.app.intellij.CommonUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,11 +14,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static icu.kyakya.open.app.CommonUtils.localFiles;
 
 /**
  * DumbAware = not need to wait for indexing
@@ -31,13 +26,14 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
     @Override
     public void update(AnActionEvent e) {
         VirtualFile file = e.getData(CommonDataKeys.VIRTUAL_FILE);
-        boolean isVisible = true;
-        if (file != null) {
-            isVisible = !file.isDirectory();
+
+        // if the selected is dir, not be visible
+        if (file != null && file.isDirectory()) {
+            e.getPresentation().setEnabledAndVisible(false);
+            return;
         }
 
-        e.getPresentation().setEnabledAndVisible(e.getProject() != null && localFiles(e).findAny().isPresent());
-        e.getPresentation().setVisible(isVisible);
+        e.getPresentation().setEnabledAndVisible(CommonUtils.localFiles(e).size() != 0);
     }
 
     /**
@@ -65,13 +61,14 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        Project project = getEventProject(e);
-        List<VirtualFile> files = localFiles(e).collect(Collectors.toList());
+        var project = getEventProject(e);
+        var files = CommonUtils.localFiles(e);
         if (project == null || files.isEmpty()) return;
 
         for (VirtualFile file : files) {
             try {
-                Desktop.getDesktop().open(new File(file.getPath()));
+                var desktop = Desktop.getDesktop();
+                desktop.open(new File(file.getPath()));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
