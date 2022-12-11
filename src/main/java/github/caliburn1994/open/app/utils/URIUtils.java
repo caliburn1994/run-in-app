@@ -2,11 +2,13 @@ package github.caliburn1994.open.app.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.client.utils.URIBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class URIUtils {
@@ -24,8 +26,13 @@ public class URIUtils {
             url = url.substring(0, url.length() - 4);
         }
 
-        relativePath = StringUtils.isEmpty(relativePath) ? "" : relativePath + "/";
-        return new URL(url + "/tree/" + branch + "/" + relativePath ).toURI().toString();
+
+        relativePath = Arrays.stream(relativePath.split("/"))
+                .filter(StringUtils::isNoneEmpty)
+                .map(str -> new URIBuilder().setPath(str).toString())
+                .collect(Collectors.joining("/"));
+        url = url + "/tree/" + branch + relativePath;
+        return url;
     }
 
 
