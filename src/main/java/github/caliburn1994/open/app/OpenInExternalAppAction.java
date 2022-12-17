@@ -107,7 +107,7 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
 
 
     private static void openFileWithApp2(File file) throws IOException {
-        var path = file.getPath();
+        var path = file.getAbsolutePath();
 
         // if it is a dir
         if (file.isDirectory()) {
@@ -128,9 +128,10 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
             part2 = Arrays.stream(pathArr).map(p -> "\"" + p + "\"").collect(Collectors.joining("\\\\"));
 
             path = part1 + part2;
-
             Runtime.getRuntime().exec("cmd /c " + path);
 
+        } else if (os.startsWith("mac os")){
+            Runtime.getRuntime().exec("open " + path);
         } else {
             var desktop = Desktop.getDesktop();
             desktop.open(new File(path));
