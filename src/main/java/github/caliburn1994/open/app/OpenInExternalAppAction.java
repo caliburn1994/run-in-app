@@ -14,6 +14,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * DumbAware = not need to wait for indexing
@@ -66,15 +68,77 @@ public class OpenInExternalAppAction extends AnAction implements DumbAware {
 
         for (VirtualFile file : files) {
             try {
-                var desktop = Desktop.getDesktop();
-                desktop.open(new File(file.getPath()));
+                openFileWithApp(file);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
     }
 
+    private static void openFileWithApp(VirtualFile file) throws IOException {
+        var path = file.getPath();
+
+        // if it is a dir
+        if (file.isDirectory()) {
+            var desktop = Desktop.getDesktop();
+            desktop.open(new File(path));
+            return;
+        }
+
+        // if it is a file
+        var os = System.getProperty("os.name").toLowerCase();
+        if (os.startsWith("windows 10")) {
+            path = path.replace("file://", "");
+
+            var part1 = path.split(":/", 2)[0] + ":\\\\";
+            var part2 = path.split(":/", 2)[1];
+            String[] pathArr = part2.split("/");
+            part2 = Arrays.stream(pathArr).map(p -> "\"" + p + "\"").collect(Collectors.joining("\\\\"));
+
+            path = part1 + part2;
+
+            Runtime.getRuntime().exec("cmd /c " + path);
+
+        } else {
+            var desktop = Desktop.getDesktop();
+            desktop.open(new File(path));
+        }
+    }
+
+
+    private static void openFileWithApp2(File file) throws IOException {
+        var path = file.getPath();
+
+        // if it is a dir
+        if (file.isDirectory()) {
+            var desktop = Desktop.getDesktop();
+            desktop.open(new File(path));
+            return;
+        }
+
+        // if it is a file
+        var os = System.getProperty("os.name").toLowerCase();
+        if (os.startsWith("windows 10")) {
+            // C:\Users\Admin\Downloads\VID_20160226_203631957.mp4 => C:\\Users\\Admin\\Downloads\\VID_20160226_203631957.mp4
+            path = path.replace("file://", "");
+
+            var part1 = path.split(":/", 2)[0] + ":\\\\";
+            var part2 = path.split(":/", 2)[1];
+            String[] pathArr = part2.split("/");
+            part2 = Arrays.stream(pathArr).map(p -> "\"" + p + "\"").collect(Collectors.joining("\\\\"));
+
+            path = part1 + part2;
+
+            Runtime.getRuntime().exec("cmd /c " + path);
+
+        } else {
+            var desktop = Desktop.getDesktop();
+            desktop.open(new File(path));
+        }
+
+    }
 
 
 
 }
+
