@@ -30,7 +30,7 @@ public class URIUtils {
         relativePath = Arrays.stream(relativePath.split("/"))
                 .filter(StringUtils::isNoneEmpty)
                 .map(str -> new URIBuilder().setPath(str).toString())
-                .collect(Collectors.joining("/"));
+                .collect(Collectors.joining());
         url = url + "/tree/" + branch + relativePath;
         return url;
     }

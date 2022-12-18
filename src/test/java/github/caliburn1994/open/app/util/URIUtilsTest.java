@@ -15,7 +15,7 @@ public class URIUtilsTest {
     void parseHttps() throws MalformedURLException, URISyntaxException {
         Assertions.assertThat(URIUtils.parseHttps(".idea", "master", httpsUrl)).isEqualTo("https://github.com/caliburn1994/caliburn1994.github.io/tree/master/.idea");
         Assertions.assertThat(URIUtils.parseHttps("", "master", httpsUrl)).isEqualTo("https://github.com/caliburn1994/caliburn1994.github.io/tree/master");
-        Assertions.assertThat(URIUtils.parseHttps("Security/Authentication/password/Hashed password的必要性.md", "master", httpsUrl)).isEqualTo("https://github.com/caliburn1994/paste-image-to-git/tree/main/");
+        Assertions.assertThat(URIUtils.parseHttps("Security/Authentication/password/Hashed password的必要性.md", "master", httpsUrl)).isEqualTo("https://github.com/caliburn1994/caliburn1994.github.io/tree/master/Security/Authentication/password/Hashed%20password%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7.md");
 
     }
 
