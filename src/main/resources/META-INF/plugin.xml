@@ -4,11 +4,15 @@
     <vendor email="caliburn1994@gmail.com" url="https://kyakya.icu/about">caliburn1994</vendor>
 
     <description><![CDATA[
-        Open files in the default external app. You can use Ctrl+double right-click to do this operation. For more information, see <a href="https://github.com/caliburn1994/run-in-app" target="_blank">here</a>.
+        Open files in the default external app. For more information, see <a href="https://github.com/caliburn1994/run-in-app" target="_blank">here</a>.
         ]]></description>
 
     <change-notes><![CDATA[
-        <h3>1.0.6: for 2022.2</h3>
+        <h3>1.0.8: remove shortcut</h3>
+        <ul>
+			<li>because CTRL+double right-click does not work very well. If you want, you can set another shortcut for it</li>
+		</ul>
+        <h3>1.0.7: for 2022.2</h3>
         <ul>
 			<li>work for idea 2022.3.</li>
 		</ul>
@@ -53,7 +57,6 @@
                 class="github.caliburn1994.open.app.OpenInExternalAppAction"
                 text="External Apps">
             <add-to-group group-id="RevealGroup" anchor="last"/>
-            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
         </action>
         <action id="github.caliburn1994.open.app.OpenGitInBrowser"
                 class="github.caliburn1994.open.app.OpenGitInBrowser"

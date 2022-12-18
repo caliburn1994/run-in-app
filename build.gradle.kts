@@ -7,8 +7,8 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.7.22"
 }
 
-group = "icu.kyakya"
-version = "1.0.7"
+group = "github.caliburn1994"
+version = "1.0.8"
 
 
 // config of gradle
