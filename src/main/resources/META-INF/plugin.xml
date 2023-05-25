@@ -8,6 +8,7 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.0.9: for 2023.3</h3>
         <h3>1.0.8: remove shortcut</h3>
         <ul>
 			<li>because CTRL+double right-click does not work very well. If you want, you can set another shortcut for it</li>

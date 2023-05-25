@@ -3,12 +3,12 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     java
-    id("org.jetbrains.intellij") version "1.10.0"
+    id("org.jetbrains.intellij") version "1.13.3"
     id("org.jetbrains.kotlin.jvm") version "1.7.22"
 }
 
 group = "github.caliburn1994"
-version = "1.0.8"
+version = "1.0.9"
 
 
 // config of gradle
@@ -21,9 +21,12 @@ java {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    gradlePluginPortal()
 }
 
+//
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
@@ -45,17 +48,19 @@ tasks.getByName<Test>("test") {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set("2022.3")
+    version.set("2023.1")
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
-
 
 
 tasks {
     wrapper {
         jarFile = file(System.getProperty("user.dir") + "/gradle/wrapper/gradle-wrapper.jar")
-        gradleVersion = "7.3"
+        gradleVersion = "7.6.1"
         distributionType = Wrapper.DistributionType.ALL
     }
-
+    patchPluginXml {
+        sinceBuild.set("231")
+        untilBuild.set("")
+    }
 }
