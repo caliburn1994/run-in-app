@@ -37,8 +37,10 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.24")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 
+    implementation("org.eclipse.jgit:org.eclipse.jgit:6.6.1.202309021850-r")
+
     //
-    testImplementation("org.assertj:assertj-core:3.6.1")
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
 tasks.getByName<Test>("test") {
@@ -48,7 +50,7 @@ tasks.getByName<Test>("test") {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set("2023.1")
+    version.set("2023.3")
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
@@ -60,7 +62,7 @@ tasks {
         distributionType = Wrapper.DistributionType.ALL
     }
     patchPluginXml {
-        sinceBuild.set("231")
+        sinceBuild.set("233")
         untilBuild.set("")
     }
 }
