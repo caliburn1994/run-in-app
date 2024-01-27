@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "github.caliburn1994"
-version = "1.0.9"
+version = "1.0.10"
 
 
 // config of gradle
@@ -48,7 +48,7 @@ tasks.getByName<Test>("test") {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set("2023.1")
+    version.set("2023.3")
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
@@ -60,7 +60,7 @@ tasks {
         distributionType = Wrapper.DistributionType.ALL
     }
     patchPluginXml {
-        sinceBuild.set("231")
+        sinceBuild.set("233")
         untilBuild.set("")
     }
 }

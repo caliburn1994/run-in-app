@@ -15,6 +15,7 @@ import github.caliburn1994.open.app.intellij.CommonUtils;
 import github.caliburn1994.open.app.utils.URIUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -35,7 +36,7 @@ public class OpenGitInBrowser extends AnAction implements DumbAware {
     private @NotNull VirtualFile virtualFile;
     private @NotNull GitRepository repository;
 
-    private @NotNull GitRemoteBranch remoteBranch;
+    private @Nullable GitRemoteBranch remoteBranch;
 
     private @NotNull String remoteUri;
 
@@ -67,7 +68,7 @@ public class OpenGitInBrowser extends AnAction implements DumbAware {
             remoteUri = new ArrayList<>(repository.getRemotes()).get(0).getUrls().get(0);
 
             //noinspection RedundantIfStatement
-            if (CommonUtils.localFiles(e).size() == 0) return false;
+            if (CommonUtils.localFiles(e).isEmpty()) return false;
 
         } catch (NullPointerException e1) {
             return false;
@@ -78,12 +79,14 @@ public class OpenGitInBrowser extends AnAction implements DumbAware {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
+        if (remoteBranch == null) return;
+
         // relativePath
         var repositoryRoot = repository.getRoot();
-        var relativePath = VfsUtilCore.getRelativePath(virtualFile, repositoryRoot) + "";
+        var relativePath = VfsUtilCore.getRelativePath(virtualFile, repositoryRoot);
 
         // branch
-        var branch = remoteBranch.getNameForRemoteOperations() + "";
+        var branch = remoteBranch.getNameForRemoteOperations();
 
         // git uri
         try {
