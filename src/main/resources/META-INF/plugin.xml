@@ -8,6 +8,7 @@
         ]]></description>
 
     <change-notes><![CDATA[
+           <h3>1.1.0: remove 'open in external app', because it has been supported by IDEA.</h3>
          <h3>1.0.10</h3>        <ul>
 			<li>replace deprecated API</li>
 			<li>update plugin without restart</li>
@@ -50,20 +51,11 @@
 	]]></change-notes>
 
 
-    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
-         on how to target different products -->
-    <depends>com.intellij.modules.platform</depends>
-
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
     </extensions>
 
     <actions>
-        <action id="github.caliburn1994.open.app.OpenInExternalAppAction"
-                class="github.caliburn1994.open.app.OpenInExternalAppAction"
-                text="External Apps">
-            <add-to-group group-id="RevealGroup" anchor="last"/>
-        </action>
         <action id="github.caliburn1994.open.app.OpenGitInBrowser"
                 class="github.caliburn1994.open.app.OpenGitInBrowser"
                 text="Git(Latest)">
@@ -71,6 +63,8 @@
         </action>
     </actions>
 
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+     on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
-
 </idea-plugin>
