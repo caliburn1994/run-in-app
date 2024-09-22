@@ -2,6 +2,7 @@ package github.caliburn1994.open.app;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -10,14 +11,12 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import git4idea.GitLocalBranch;
 import git4idea.GitRemoteBranch;
-import git4idea.repo.GitBranchTrackInfo;
 import git4idea.repo.GitRepository;
 import github.caliburn1994.open.app.icon.OpenAppIcon;
 import github.caliburn1994.open.app.intellij.CommonUtils;
 import github.caliburn1994.open.app.utils.URIUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -35,6 +34,10 @@ import static git4idea.GitUtil.getRepositoryManager;
 @Slf4j
 public class OpenGitInBrowser extends AnAction implements DumbAware {
 
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {
